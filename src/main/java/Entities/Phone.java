@@ -83,11 +83,11 @@ public class Phone implements Serializable {
         this.description = description;
     }
 
-    public Person getIdperson() {
+    public Person getPerson() {
         return idperson;
     }
 
-    public void setIdperson(Person idperson) {
+    public void setPerson(Person idperson) {
         this.idperson = idperson;
     }
 
@@ -115,5 +115,5 @@ public class Phone implements Serializable {
     public String toString() {
         return "Entities.Phone[ id=" + id + " ]";
     }
-    
+
 }
