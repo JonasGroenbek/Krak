@@ -3,7 +3,7 @@ package Rest;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("api")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -13,7 +13,11 @@ public class ApplicationConfig extends Application {
         return resources;
     }
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(Rest.GenericResource.class);
+        resources.add(Rest.AddressFacadeREST.class);
+        resources.add(Rest.CityinfoFacadeREST.class);
+        resources.add(Rest.HobbyFacadeREST.class);
+        resources.add(Rest.PersonFacadeREST.class);
+        resources.add(Rest.PhoneFacadeREST.class);
     }
     
 }
