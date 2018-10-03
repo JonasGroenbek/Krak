@@ -3,7 +3,7 @@ package Rest;
 import Entities.Cityinfo;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Persistence;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,16 +14,13 @@ import javax.ws.rs.core.Response;
 @Path("city")
 public class CityinfoFacadeREST extends AbstractFacade<Cityinfo> {
 
-    @PersistenceContext(unitName = "krakpu")
-    private EntityManager em;
-
     public CityinfoFacadeREST() {
         super(Cityinfo.class);
     }
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return Persistence.createEntityManagerFactory("krakpu").createEntityManager();
     }
 
     @GET
@@ -41,10 +38,5 @@ public class CityinfoFacadeREST extends AbstractFacade<Cityinfo> {
         return super.find(id);
     }
 
-    @GET
-    @Path("{count}")
-    public Response findAmount() {
-        return super.count();
-    }
 
 }
