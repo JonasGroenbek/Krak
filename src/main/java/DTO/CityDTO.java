@@ -17,7 +17,7 @@ public class CityDTO {
     }
 
     public CityDTO(Cityinfo city) {
-        this.zipCode = city.getZipcode();
+        this.zipCode = city.getZip();
         this.city = city.getCity();
         convertAddress(city.getAddressCollection());
     }

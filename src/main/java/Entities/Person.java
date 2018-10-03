@@ -40,6 +40,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Person.findByLastname", query = "SELECT p FROM Person p WHERE p.lastname = :lastname")})
 public class Person implements Serializable {
 
+    @JoinColumn(name = "idaddress", referencedColumnName = "id")
+    @ManyToOne
+    private Address idaddress;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,8 +65,7 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "person")
     private Collection<Phone> phoneCollection;
     @JoinColumns({
-        @JoinColumn(name = "idaddress", referencedColumnName = "id")
-        , @JoinColumn(name = "idaddress", referencedColumnName = "id")})
+        @JoinColumn(name = "idaddress", referencedColumnName = "id", insertable = false, updatable = false)})
     @ManyToOne
     private Address address;
 
@@ -154,6 +157,14 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         return "Entities.Person[ id=" + id + " ]";
+    }
+
+    public Address getIdaddress() {
+        return idaddress;
+    }
+
+    public void setIdaddress(Address idaddress) {
+        this.idaddress = idaddress;
     }
 
 }

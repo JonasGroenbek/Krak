@@ -12,12 +12,13 @@ public class ApplicationConfig extends Application {
         addRestResourceClasses(resources);
         return resources;
     }
+
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(Rest.AddressFacadeREST.class);
-        resources.add(Rest.CityinfoFacadeREST.class);
-        resources.add(Rest.HobbyFacadeREST.class);
-        resources.add(Rest.PersonFacadeREST.class);
-        resources.add(Rest.PhoneFacadeREST.class);
+        resources.add(Rest.AddressResource.class);
+        resources.add(Rest.CityinfoResource.class);
+        resources.add(Rest.HobbyResource.class);
+        resources.add(Rest.PersonResource.class);
+        resources.add(Rest.PhoneResource.class);
     }
-    
+
 }
