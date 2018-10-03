@@ -1,7 +1,6 @@
 package Rest;
 
 import javax.persistence.EntityManager;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 public abstract class AbstractFacade<T> {
@@ -35,17 +34,6 @@ public abstract class AbstractFacade<T> {
     }
 
     public Response findAll() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        return Response.ok(getEntityManager().createQuery(cq).getResultList()).build();
+        return Response.ok(getEntityManager().createNamedQuery(entityClass.toString() + ".findAll").getResultList()).build();
     }
-
-    public Response count() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
-        cq.select(getEntityManager().getCriteriaBuilder().count(rt));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
-        return Response.ok(((Long) q.getSingleResult()).intValue()).build();
-    }
-
 }
