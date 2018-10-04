@@ -15,8 +15,9 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityToJSON {
+public class JSONConverter<T> {
 
+    //MAKE THIS CLASS GENERIC AND MAKE FACADES IMPLEMENT
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     //ADDRESSES JSONCONVERTERS

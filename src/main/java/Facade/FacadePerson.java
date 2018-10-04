@@ -1,8 +1,6 @@
 package Facade;
 
-import DTO.CityDTO;
 import DTO.PersonDTO;
-import Entities.Cityinfo;
 import Entities.Person;
 import java.util.List;
 import javax.persistence.EntityManager;
