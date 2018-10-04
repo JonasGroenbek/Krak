@@ -48,4 +48,18 @@ public class FacadeHobby {
             em.close();
         }
     }
+
+    public void postHobby(String description, String name) {
+        Hobby hobby = new Hobby();
+        hobby.setName(name);
+        EntityManager em = emf.createEntityManager();
+        try {
+            hobby.setDescription(description);
+            em.getTransaction().begin();
+            em.persist(hobby);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 }
