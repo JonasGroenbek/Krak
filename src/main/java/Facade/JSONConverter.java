@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONConverter<T> {
+public class JSONConverter {
 
     //MAKE THIS CLASS GENERIC AND MAKE FACADES IMPLEMENT
     Gson gson = new GsonBuilder().setPrettyPrinting().create();

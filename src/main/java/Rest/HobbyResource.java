@@ -41,13 +41,16 @@ public class HobbyResource {
         return Response.ok(JSONHobbies).build();
     }
 
-//    @POST
-//    @Path("Create/{description}/{name}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response postHobby(@PathParam("description", "name") String description, String name) {
-//        String JSONHobby = jsonConverter.getJsonFromHobby(fHobby.getHobby(id));
-//        return Response.ok(JSONHobby).build();
-//    }
+    @POST
+    @Path("{description}/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postHobby(
+            @PathParam("description") String description,
+            @PathParam("name") String name) {
+        fHobby.postHobby(description, name);
+        return Response.ok().build();
+    }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putJson(String content) {
