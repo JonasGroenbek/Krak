@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Simple template to create SPA's with plain JavaScript using Babel, Webpack and Webpacks devserver
 
 ## Getting started
@@ -8,6 +8,6 @@
 - In the folder it was cloned into, type npm install
 - In the folder it was cloned into (if you have installed vs-code) type "code ." to open vs-code
 - In the folder it was cloned into type npm start, to run the project via Webpacks development server
-=======
+
+
 dette er et krak projekt
->>>>>>> 2ddd4dfa521a8311579b0a1563c62768603a7504
