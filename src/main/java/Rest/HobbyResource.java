@@ -24,6 +24,7 @@ public class HobbyResource {
 
     public HobbyResource() {
     }
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

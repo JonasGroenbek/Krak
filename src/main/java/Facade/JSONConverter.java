@@ -51,7 +51,11 @@ public class JSONConverter<T> {
     }
 
     public String getJsonFromCityinfos(List<Cityinfo> cityinfos) {
-        return gson.toJson(cityinfos);
+        List<CityDTO> cityDTOList = new ArrayList();
+        for (Cityinfo city : cityinfos) {
+            cityDTOList.add(new CityDTO(city));
+        }
+        return gson.toJson(cityDTOList);
     }
 
     public String getJsonFromCityDTO(CityDTO cityDTO) {

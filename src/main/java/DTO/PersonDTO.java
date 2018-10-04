@@ -15,5 +15,4 @@ public class PersonDTO {
         this.lastName = person.getLastname();
         this.addressDTO = new AddressDTO(person.getAddress());
     }
-
 }

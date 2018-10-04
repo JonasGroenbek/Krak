@@ -23,8 +23,8 @@ public class PersonResource {
     private UriInfo context;
 
     public PersonResource() {
-    }    
-    
+    }
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
