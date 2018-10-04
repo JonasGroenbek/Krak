@@ -7,6 +7,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -40,6 +41,13 @@ public class HobbyResource {
         return Response.ok(JSONHobbies).build();
     }
 
+//    @POST
+//    @Path("Create/{description}/{name}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response postHobby(@PathParam("description", "name") String description, String name) {
+//        String JSONHobby = jsonConverter.getJsonFromHobby(fHobby.getHobby(id));
+//        return Response.ok(JSONHobby).build();
+//    }
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putJson(String content) {
