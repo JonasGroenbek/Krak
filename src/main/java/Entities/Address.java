@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 import java.io.Serializable;
@@ -24,10 +19,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Jonas
- */
 @Entity
 @Table(name = "address")
 @XmlRootElement
@@ -37,6 +28,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Address.findByAdditionalinfo", query = "SELECT a FROM Address a WHERE a.additionalinfo = :additionalinfo")
     , @NamedQuery(name = "Address.findByStreet", query = "SELECT a FROM Address a WHERE a.street = :street")})
 public class Address implements Serializable {
+
+    @JoinColumn(name = "idcity", referencedColumnName = "id")
+    @ManyToOne
+    private Cityinfo idcity;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,8 +46,7 @@ public class Address implements Serializable {
     @Column(name = "street")
     private String street;
     @JoinColumns({
-        @JoinColumn(name = "idcity", referencedColumnName = "id")
-        , @JoinColumn(name = "idcity", referencedColumnName = "id")})
+        @JoinColumn(name = "idcity", referencedColumnName = "id", insertable = false, updatable = false)})
     @ManyToOne
     private Cityinfo cityinfo;
     @OneToMany(mappedBy = "address")
@@ -130,5 +124,13 @@ public class Address implements Serializable {
     public String toString() {
         return "Entities.Address[ id=" + id + " ]";
     }
-    
+
+    public Cityinfo getIdcity() {
+        return idcity;
+    }
+
+    public void setIdcity(Cityinfo idcity) {
+        this.idcity = idcity;
+    }
+
 }

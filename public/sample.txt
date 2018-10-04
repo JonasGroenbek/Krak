@@ -1,0 +1,1 @@
+Dette er en tesfil for at vise hvordan man kan hente data fra en txt file

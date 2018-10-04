@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 import java.io.Serializable;
@@ -21,10 +16,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Jonas
- */
 @Entity
 @Table(name = "cityinfo")
 @XmlRootElement
@@ -32,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cityinfo.findAll", query = "SELECT c FROM Cityinfo c")
     , @NamedQuery(name = "Cityinfo.findById", query = "SELECT c FROM Cityinfo c WHERE c.id = :id")
     , @NamedQuery(name = "Cityinfo.findByCity", query = "SELECT c FROM Cityinfo c WHERE c.city = :city")
-    , @NamedQuery(name = "Cityinfo.findByZipcode", query = "SELECT c FROM Cityinfo c WHERE c.zipcode = :zipcode")})
+    , @NamedQuery(name = "Cityinfo.findByZip", query = "SELECT c FROM Cityinfo c WHERE c.zip = :zip")})
 public class Cityinfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,9 +35,9 @@ public class Cityinfo implements Serializable {
     @Size(max = 255)
     @Column(name = "city")
     private String city;
-    @Column(name = "zipcode")
-    private Integer zipcode;
-    @OneToMany(mappedBy = "cityinfo")
+    @Column(name = "zip")
+    private Integer zip;
+    @OneToMany(mappedBy = "idcity")
     private Collection<Address> addressCollection;
 
     public Cityinfo() {
@@ -72,12 +63,12 @@ public class Cityinfo implements Serializable {
         this.city = city;
     }
 
-    public Integer getZipcode() {
-        return zipcode;
+    public Integer getZip() {
+        return zip;
     }
 
-    public void setZipcode(Integer zipcode) {
-        this.zipcode = zipcode;
+    public void setZip(Integer zip) {
+        this.zip = zip;
     }
 
     @XmlTransient

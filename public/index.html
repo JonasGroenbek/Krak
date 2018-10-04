@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+  <!-- CDN Polyfills which should allow you to use fetch (and promises) from IE and older browsers -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1 class="h1.display-4 mb-4">Best JSON-API ever!</h1>
+
+
+  <div class="container">
+    <em>
+      
+    </em>
+    <br/>
+    <br/>
+
+
+<div class="d-flex btn-group-lg">
+    <button class="btn btn-primary mr-4 btn-group-lg" id="btngetall">Get All Persons</button>
+    
+   
+    <button  class="btn btn-success mr-4 large" id="btngetid">Get a nigga from id</button>
+
+  </div>
+ 
+
+<div class="container">
+<input type="text" id="id"  class="form-control"> 
+
+
+<div>
+  <p> Here you can enter your information, and we will make you into an object. Unless you're a woman, then you're already one</p>
+</div>
+
+
+
+
+
+fname
+<input type="text" id="fname"  class="form-control"> 
+lname
+<input type="text" id="lname"  class="form-control"> 
+email
+<input type="text" id="email"  class="form-control" >
+address 
+<input type="text" id="email" class="form-control" > 
+
+
+<form id="addPost">
+<div class="form-group">
+    title
+<input type="text" id="title" class="form-control"> 
+body
+<textarea id="body" class="form-control"></textarea>
+<input type="submit" value="Submit" class="btn btn-outline--primary">
+</form>
+</div>
+
+
+
+        <table id="tbl" class="table">
+          <thead>
+          <th>First Name</th><th>Surname</th><th>Email</th>
+          </thead>
+          <!-- >TODO: Dynamically create the rows with data fetched from the API, and insert into the table here -->
+          <tbody id="tblbody"></tbody>
+        </table>
+      </div>
+ 
+  </div>
+
+
+
+
+  <div id="test"> </div>
+  <div id="output"></div>
+
+  <script>
+
+    // måde at få text filer på via fetch
+    
+  document.getElementById('test').addEventListener("click", getText);
+ 
+  
+
+  function getText(){
+    /*
+    fetch('sample.txt')
+    .then(function(data){
+      return data.text();
+    })
+    .then(function(data){
+      console.log(data);
+    });
+  }
+  */
+
+
+    // måde at få text filer på via fetch ved brug af ES6
+
+  fetch('sample.txt')
+  .then((data) => data.text())
+  .then((data) => {
+    document.getElementById('output').innerHTML = data;
+  })
+  //eksempel på hvordan man fanger en error
+  .catch((err) => console.log(err))
+}  
+  </script>
+
+  <script src="bundle.js"></script>
+</body>
+
+</html>

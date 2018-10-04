@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 import java.io.Serializable;
@@ -35,6 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Phone.findByNumber", query = "SELECT p FROM Phone p WHERE p.number = :number")})
 public class Phone implements Serializable {
 
+    @JoinColumn(name = "idperson", referencedColumnName = "id")
+    @ManyToOne
+    private Person idperson;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,8 +47,7 @@ public class Phone implements Serializable {
     @Column(name = "number")
     private String number;
     @JoinColumns({
-        @JoinColumn(name = "idperson", referencedColumnName = "id")
-        , @JoinColumn(name = "idperson", referencedColumnName = "id")})
+        @JoinColumn(name = "idperson", referencedColumnName = "id", insertable = false, updatable = false)})
     @ManyToOne
     private Person person;
 
@@ -116,5 +114,13 @@ public class Phone implements Serializable {
     public String toString() {
         return "Entities.Phone[ id=" + id + " ]";
     }
-    
+
+    public Person getIdperson() {
+        return idperson;
+    }
+
+    public void setIdperson(Person idperson) {
+        this.idperson = idperson;
+    }
+
 }
