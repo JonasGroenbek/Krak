@@ -1,7 +1,9 @@
 package Rest;
 
-import Facade.EntityToJSON;
+import Entities.Address;
+import Facade.JSONConverter;
 import Facade.FacadeAddress;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -9,14 +11,15 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("Address")
 public class AddressResource {
 
-    FacadeAddress faddress = new FacadeAddress();
-    EntityToJSON jsonConverter = new EntityToJSON();
+    FacadeAddress fAddress = new FacadeAddress();
+    JSONConverter jsonConverter = new JSONConverter();
 
     @Context
     private UriInfo context;
@@ -25,14 +28,24 @@ public class AddressResource {
     }
 
     @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAddresses(@PathParam("id") int id) {
+        String JSONAddress = jsonConverter.getJSONfromAddress(fAddress.getAddress(id));
+        return Response.ok(JSONAddress).build();
+    }
+
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAddresses() {
-        String JSONAddress = jsonConverter.getJsonFromAddresses(faddress.getAllAddresses());
-        return Response.ok(JSONAddress).build();
+        List<Address> addressList = fAddress.getAllAddresses();
+        String JSONAddresses = jsonConverter.getJsonFromAddresses(addressList);
+        return Response.ok(JSONAddresses).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    public Response putJson(String content) {
+        return Response.status(Response.Status.NO_CONTENT).build();
     }
 }

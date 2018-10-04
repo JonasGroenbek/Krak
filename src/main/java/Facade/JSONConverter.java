@@ -15,8 +15,9 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityToJSON {
+public class JSONConverter<T> {
 
+    //MAKE THIS CLASS GENERIC AND MAKE FACADES IMPLEMENT
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     //ADDRESSES JSONCONVERTERS
@@ -50,7 +51,11 @@ public class EntityToJSON {
     }
 
     public String getJsonFromCityinfos(List<Cityinfo> cityinfos) {
-        return gson.toJson(cityinfos);
+        List<CityDTO> cityDTOList = new ArrayList();
+        for (Cityinfo city : cityinfos) {
+            cityDTOList.add(new CityDTO(city));
+        }
+        return gson.toJson(cityDTOList);
     }
 
     public String getJsonFromCityDTO(CityDTO cityDTO) {
