@@ -7,6 +7,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -44,5 +45,15 @@ public class CityinfoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putJson(String content) {
         return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{city}/{zip}")
+    public Response postCity(
+            @PathParam("city") String city,
+            @PathParam("zip") int zip) {
+        fCity.postCity(city, zip);
+        return Response.ok("object created succesfully").build();
     }
 }

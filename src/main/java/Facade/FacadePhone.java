@@ -12,7 +12,7 @@ public class FacadePhone {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("krakpu");
 
-    public PhoneDTO PhoneDTO(int id) {
+    public PhoneDTO getPhoneDTO(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             Query query = em.createNamedQuery("Phone.findById", Phone.class);
@@ -44,6 +44,21 @@ public class FacadePhone {
             List<Phone> phoneList = query.getResultList();
             return phoneList;
 
+        } finally {
+            em.close();
+        }
+    }
+
+    public void postPhone(String description, String number, int idperson) {
+        Phone phone = new Phone();
+        phone.setDescription(description);
+        phone.setNumber(number);
+        phone.setId(idperson);
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(phone);
+            em.getTransaction().commit();
         } finally {
             em.close();
         }

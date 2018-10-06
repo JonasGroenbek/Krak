@@ -2,6 +2,7 @@ package Facade;
 
 import DTO.CityDTO;
 import Entities.Cityinfo;
+import static Entities.Person_.address;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,6 +45,20 @@ public class FacadeCity {
             List<Cityinfo> cityList = query.getResultList();
             return cityList;
 
+        } finally {
+            em.close();
+        }
+    }
+
+    public void postCity(String cityName, int zipcode) {
+        Cityinfo city = new Cityinfo();
+        city.setZip(zipcode);
+        city.setCity(cityName);
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(city);
+            em.getTransaction().commit();
         } finally {
             em.close();
         }

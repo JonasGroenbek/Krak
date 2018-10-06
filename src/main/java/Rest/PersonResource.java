@@ -7,6 +7,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -44,5 +45,17 @@ public class PersonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putJson(String content) {
         return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{email}/{firstName}/{lastName}/{addressId}")
+    public Response postPerson(
+            @PathParam("email") String email,
+            @PathParam("firstName") String firstName,
+            @PathParam("lastName") String lastName,
+            @PathParam("addressId") int addressId){
+        fPerson.postPersons(email, firstName, lastName, addressId);
+        return Response.ok("Person created succesfully").build();
     }
 }

@@ -48,4 +48,19 @@ public class FacadeAddress {
             em.close();
         }
     }
+
+    public void postAddress(String info, String street, int cityId) {
+        Address address = new Address();
+        address.setAdditionalinfo(info);
+        address.setStreet(street);
+        address.setId(cityId);
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(address);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 }

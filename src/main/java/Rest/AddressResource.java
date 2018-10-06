@@ -9,6 +9,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -47,5 +48,16 @@ public class AddressResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putJson(String content) {
         return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{info}/{street}/{cityId}")
+    public Response postAddress(
+            @PathParam("info") String info,
+            @PathParam("street") String street,
+            @PathParam("zip") int zip) {
+        fAddress.postAddress(info, street, zip);
+        return Response.ok("Address created succesfully").build();
     }
 }
