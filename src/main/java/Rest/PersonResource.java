@@ -54,7 +54,7 @@ public class PersonResource {
             @PathParam("email") String email,
             @PathParam("firstName") String firstName,
             @PathParam("lastName") String lastName,
-            @PathParam("addressId") int addressId){
+            @PathParam("addressId") int addressId) {
         fPerson.postPersons(email, firstName, lastName, addressId);
         return Response.ok("Person created succesfully").build();
     }
