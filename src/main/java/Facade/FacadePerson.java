@@ -12,7 +12,7 @@ public class FacadePerson {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("krakpu");
 
-    public PersonDTO PersonDTO(int id) {
+    public PersonDTO getPersonDTO(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             Query query = em.createNamedQuery("Person.findById", Person.class);
@@ -42,6 +42,22 @@ public class FacadePerson {
             Query query = em.createNamedQuery("Person.findAll", Person.class);
             List<Person> personList = query.getResultList();
             return personList;
+        } finally {
+            em.close();
+        }
+    }
+
+    public void postPersons(String email, String firstName, String lastName, int addressId) {
+        Person person = new Person();
+        person.setEmail(email);
+        person.setFirstname(firstName);
+        person.setLastname(lastName);
+        person.setId(addressId);
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(person);
+            em.getTransaction().commit();
         } finally {
             em.close();
         }

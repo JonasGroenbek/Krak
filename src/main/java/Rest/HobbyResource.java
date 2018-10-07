@@ -44,11 +44,12 @@ public class HobbyResource {
     @POST
     @Path("{description}-{name}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response postHobby(
-            @PathParam("description") String description,
-            @PathParam("name") String name) {
+        @PathParam("description") String description,
+        @PathParam("name") String name) {
         fHobby.postHobby(description, name);
-        return Response.ok().build();
+        return Response.ok("Hobby created succesfully").build();
     }
 
     @PUT
