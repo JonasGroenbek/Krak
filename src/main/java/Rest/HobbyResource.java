@@ -42,7 +42,7 @@ public class HobbyResource {
     }
 
     @POST
-    @Path("{description}/{name}")
+    @Path("{description}-{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response postHobby(
             @PathParam("description") String description,
