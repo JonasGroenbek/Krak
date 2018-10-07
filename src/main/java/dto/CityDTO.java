@@ -1,6 +1,6 @@
-package DTO;
+package dto;
 
-import Entities.Cityinfo;
+import entities.Cityinfo;
 
 public class CityDTO {
 

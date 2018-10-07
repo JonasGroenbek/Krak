@@ -1,6 +1,6 @@
-package DTO;
+package dto;
 
-import Entities.Person;
+import entities.Person;
 
 public class PersonDTO {
 

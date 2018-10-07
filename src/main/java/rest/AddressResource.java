@@ -1,8 +1,8 @@
-package Rest;
+package rest;
 
-import Entities.Address;
-import Facade.JSONConverter;
-import Facade.FacadeAddress;
+import entities.Address;
+import facade.JSONConverter;
+import facade.FacadeAddress;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;

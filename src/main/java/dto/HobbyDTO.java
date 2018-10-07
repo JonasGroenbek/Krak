@@ -1,6 +1,6 @@
-package DTO;
+package dto;
 
-import Entities.Hobby;
+import entities.Hobby;
 
 public class HobbyDTO {
 

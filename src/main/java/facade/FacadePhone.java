@@ -1,7 +1,7 @@
-package Facade;
+package facade;
 
-import DTO.PhoneDTO;
-import Entities.Phone;
+import dto.PhoneDTO;
+import entities.Phone;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

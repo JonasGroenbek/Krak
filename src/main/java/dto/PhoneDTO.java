@@ -1,6 +1,6 @@
-package DTO;
+package dto;
 
-import Entities.Phone;
+import entities.Phone;
 
 public class PhoneDTO {
 

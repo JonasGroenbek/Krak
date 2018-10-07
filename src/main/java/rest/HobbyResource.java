@@ -1,7 +1,7 @@
-package Rest;
+package rest;
 
-import Facade.JSONConverter;
-import Facade.FacadeHobby;
+import facade.JSONConverter;
+import facade.FacadeHobby;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -42,11 +42,12 @@ public class HobbyResource {
     }
 
     @POST
+    @Path("{description}-{name}")
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{description}/{name}")
     public Response postHobby(
-            @PathParam("description") String description,
-            @PathParam("name") String name) {
+        @PathParam("description") String description,
+        @PathParam("name") String name) {
         fHobby.postHobby(description, name);
         return Response.ok("Hobby created succesfully").build();
     }

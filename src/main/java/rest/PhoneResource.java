@@ -1,7 +1,8 @@
-package Rest;
+package rest;
 
-import Facade.JSONConverter;
-import Facade.FacadePhone;
+import facade.JSONConverter;
+import facade.FacadePhone;
+import javax.json.Json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;

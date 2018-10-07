@@ -1,8 +1,8 @@
-package Facade;
+package facade;
 
-import DTO.CityDTO;
-import Entities.Cityinfo;
-import static Entities.Person_.address;
+import dto.CityDTO;
+import entities.Cityinfo;
+import exception.DataNotFoundException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +19,9 @@ public class FacadeCity {
             Query query = em.createNamedQuery("Cityinfo.findById", Cityinfo.class);
             query.setParameter("id", id);
             Cityinfo cf = (Cityinfo) query.getSingleResult();
+            if(query == null){
+                throw new DataNotFoundException("The data was not found");
+            }
             return new CityDTO(cf);
         } finally {
             em.close();

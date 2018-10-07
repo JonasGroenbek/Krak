@@ -1,7 +1,7 @@
-package Facade;
+package facade;
 
-import DTO.HobbyDTO;
-import Entities.Hobby;
+import dto.HobbyDTO;
+import entities.Hobby;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

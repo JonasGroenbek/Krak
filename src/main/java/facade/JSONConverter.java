@@ -1,15 +1,15 @@
-package Facade;
+package facade;
 
-import DTO.AddressDTO;
-import DTO.CityDTO;
-import DTO.HobbyDTO;
-import DTO.PersonDTO;
-import DTO.PhoneDTO;
-import Entities.Address;
-import Entities.Cityinfo;
-import Entities.Hobby;
-import Entities.Person;
-import Entities.Phone;
+import dto.AddressDTO;
+import dto.CityDTO;
+import dto.HobbyDTO;
+import dto.PersonDTO;
+import dto.PhoneDTO;
+import entities.Address;
+import entities.Cityinfo;
+import entities.Hobby;
+import entities.Person;
+import entities.Phone;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
