@@ -16,6 +16,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(exception.DataNotFoundExceptionMapper.class);
         resources.add(exception.GenericExceptionMapper.class);
+        resources.add(filter.CorsFilter.class);
         resources.add(rest.AddressResource.class);
         resources.add(rest.CityinfoResource.class);
         resources.add(rest.HobbyResource.class);
