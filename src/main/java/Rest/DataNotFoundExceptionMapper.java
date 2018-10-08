@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exception;
+package Rest;
 
+import exception.DataNotFoundException;
+import exception.DataNotFoundException;
+import exception.ErrorMessage;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -17,19 +20,14 @@ import javax.ws.rs.ext.Provider;
 //denne annotation, registrere at vi har mappet en exception til JAX-RS klienten
 // dette svarer til at deklare en klasse i java 
 @Provider
-
-//dette fungere ligesom et hierki, så først, kommer de laveste i hierkiet, og denne bliver kaldt, hvis der ikke er andre exceptions, der er fundet inden
-public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
-
-
+public class DataNotFoundExceptionMapper implements ExceptionMapper<DataNotFoundException> {
 
     @Override
-    public Response toResponse(Throwable exception) {
+    public Response toResponse(DataNotFoundException exception) {
         ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(),
-                500,
+                404,
                 "This message has been displayed, because the data was inavalid, please use another parameter as data");
         return Response.status(Status.NOT_FOUND).entity(errorMessage).build();
     }
-    }
 
-
+}
