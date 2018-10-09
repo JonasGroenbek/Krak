@@ -26,7 +26,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable exception) {
         ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(),
-                500,
+                501,
                 "This message has been displayed, because the data was inavalid, please use another parameter as data");
         return Response.status(Status.NOT_FOUND).entity(errorMessage).build();
     }
