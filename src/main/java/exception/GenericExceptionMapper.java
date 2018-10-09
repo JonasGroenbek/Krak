@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import krak.exception.ErrorMessage;
 
 /**
  *
@@ -27,7 +28,8 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
     public Response toResponse(Throwable exception) {
         ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(),
                 501,
-                "This message has been displayed, because the data was inavalid, please use another parameter as data");
+                "This message has been displayed, because the data was inavalid, please use another parameter as data", 
+                exception);
         return Response.status(Status.NOT_FOUND).entity(errorMessage).build();
     }
     }
